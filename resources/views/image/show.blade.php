@@ -22,19 +22,30 @@
     </nav>
 
     <div class="container mt-5">
-        <img src="/storage/{{ $image->url_image }}" class="img-fluid img-thumbnail"  alt="...">
-        <h1>{{ $image->title }}</h1>
-        <p>
-            {{ $image->description }}
-        </p>
 
-        <a href="{{ route('image.edit',$image->id) }} " class="btn btn-warning">Edit</a>
-        <form action="{{ route('image.destroy',$image->id) }}" method="POST" style="display:inline;">
-            @csrf
-            @method('DELETE')
-            <button class="btn btn-danger">Delete</button>
-        </form>
+    <div class="container">
+    <div class="row">
+           
+        <div class="col-md-6 col-xs-6 thumb mb-4">
+            <img src="/storage/{{ $image->url_image }}" class="img-fluid img-thumbnail mb-2"  style="width:100%"> <br>
+            <a href="{{ route('image.edit',$image->id) }} " class="btn btn-warning">Edit</a>
+            <form action="{{ route('image.destroy',$image->id) }}" method="POST" style="display:inline;">
+                @csrf
+                @method('DELETE')
+                <button class="btn btn-danger">Delete</button>
+            </form>
+        </div>
+        <div class="col-md-6 col-xs-6 thumb mb-4">
+            <h1>{{ $image->title }}</h1>
+            <p>
+                {{ $image->description }}
+            </p>
+        </div>
+        
     </div>
+    </div>
+         
+ 
 
 
     <script src="https://kit.fontawesome.com/4344e7fc95.js" crossorigin="anonymous"></script>

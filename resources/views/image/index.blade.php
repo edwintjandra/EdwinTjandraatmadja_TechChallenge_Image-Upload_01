@@ -23,35 +23,19 @@
  
 
     <div class="container mt-5">
-    <a href="{{ route('image.create') }}" class="ml-3 btn btn-md btn-warning"><i class="fa-solid fa-plus"></i> Post image</a>
-
-       
-
-        @php($counter=0)
+    <a href="{{ route('image.create') }}" class="ml-3 btn btn-md btn-success"><i class="fa-solid fa-plus"></i> Post image</a>
+    
         <div class="container">
-        @while($counter < count($images))
-            <div class="row mb-3">
-            @for($x=0;  $x< 3; $x++)
-                @if($counter>=count($images))
-                    @break
-                @endif
-
-                @php($image=$images[$counter++])
-                <div class="col-3 mr-3">
-                <div class="card" style="width: 18rem;">
-                    <div style="height: 250px; overflow:hidden;" class="img-thumbnail">
-                            <img class="card-img-top" src="/storage/{{ $image->url_image }}" alt="Card image cap">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title"> <strong> {{$image->title }} </strong></h5>
-                        <p >{{ substr($image->description,0,25) }} ...</p>
-                        <a  href="{{ route('image.show',$image->id) }}">detail</a>
-                    </div>
-                </div>                             
+             <div class="row">
+             @foreach($images as $image)
+                <div class="col-lg-3 col-md-4 col-xs-6 thumb mb-4">
+                <a  href="{{ route('image.show',$image->id) }}" class="image-container">
+                     <img class="img-fluid"  src="/storage/{{ $image->url_image }}" alt="Card image cap"> 
+                </a>
                 </div>
-                @endfor
+             @endforeach
             </div>
-        @endwhile
+       
         </div>
     </div>
 
